@@ -26,7 +26,7 @@ func main() {
 	}
 	defer sqlDB.Close()
 
-	port := os.Getenv("port")
+	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8001"
 	}
@@ -36,7 +36,7 @@ func main() {
 
 	// ✅ CORS middleware setup
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
